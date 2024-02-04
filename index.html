@@ -14,11 +14,13 @@
   </head>
   <body>
     <div class="wrapper">
-      <img
+      <!-- <img
         src="https://assets3.thrillist.com/v1/image/2968553/1584x832/scale;webp=auto;jpeg_quality=60;progressive.jpg"
-      />
+      /> -->
+      <!-- what do i give this img id  -->
+      <img id="valentine-img" src="./images/cat_rose_drawing.webp" />
       <p>Hey Beautiful,</p>
-      <p>Will you be my Valentine?</p>
+      <p id="tag-line">Will you be my Valentine?</p>
       <div>
         <button id="yes" class="yes-btn">Yes</button>
         <button id="no" class="no-btn">No</button>
@@ -26,22 +28,111 @@
     </div>
   </body>
   <script>
+    const messages = [
+      "I'm starting to think you're playing hard to get.",
+      "Your finger must be slipping... right?",
+      "I've seen glaciers move faster to a 'yes'.",
+      "Are we doing a thing where 'no' means 'yes'?",
+      "I feel like you're just pressing buttons now.",
+      "Is this your way of flirting? Because it's confusing.",
+      "I'm getting mixed signals here.",
+      "Do you need glasses? The yes button is to the right.",
+      "This is like a bad date that never ends.",
+      "I'm about to start taking this personally.",
+      "You do realize I can't bribe you into saying yes, right?",
+      "At this point, even a maybe would feel like a win.",
+      "Is there an echo in here? Because I keep hearing 'no'.",
+      "If this is a game, I'm losing spectacularly.",
+      "You know, rejection is easier face to face.",
+      "I'm starting to feel like a telemarketer.",
+      "Should I start planning our non-existent anniversary too?",
+      "Oh, playing hard to get? I can wait...",
+      "At this rate, we'll be together by the next Ice Age.",
+      "Your dedication to the 'no' button is impressive.",
+      "How about we flip a coin? Heads, you're mine. Tails, I'm yours.",
+      "I think my heart just auto-corrected your 'no' to 'yes'.",
+      "Let's pretend you said yes and plan our future together.",
+      "Is your 'no' button broken, or are you just exercising your fingers?",
+      "On a scale of 1 to 'yes', how close are we to 'maybe'?",
+      "I'm not saying you're wrong, but 'yes' feels so right.",
+      "Are we there yet? By 'there', I mean a 'yes'.",
+      "I'm running out of witty lines. Just say 'yes' already.",
+      "Your persistence is admirable, but so is my optimism.",
+      "Let's call it fate and say you meant 'yes'.",
+      "If 'no' was a sport, you'd be an Olympian by now.",
+      "Is it too early to write our love story titled 'The One Who Almost Said Yes'?",
+      "Every 'no' is just a step closer to 'yes', or so I've been told.",
+      "I'm starting to think you enjoy this little dance of ours.",
+      "Your 'no' is my 'not yet'. Optimism, remember?",
+      "I'm not giving up. 'Yes' is just playing hard to get.",
+      "Are you testing my resilience? Because it's pretty high.",
+      "It's not 'no', it's just 'yes' in disguise. I'm onto you.",
+      "Maybe if I ask in another language? Oui? Sí?",
+      "Just think of 'yes' as a new adventure.",
+      "If this were a movie, now would be the perfect time for a plot twist.",
+      "Your 'no' has character. But so does my hope for a 'yes'.",
+      "Imagine this as a game show, and 'yes' is the winning answer.",
+      "I admire your commitment, but my charm is relentless.",
+    ];
+
+    const images = [
+      "cat_rose_drawing.webp",
+      "cat_rose_img.webp",
+      "cat_rose_beach.jpg",
+      "cat_rose_close.jpg",
+      "annoyed_cat_rose.jpeg",
+      "big_eye_gun.gif",
+      "sad_cat_gun.jpg",
+      "smirk_cat_gun.jpg",
+      "dog_with_rose.jpg",
+      "dog_with_rose2.jpg",
+      "cat_happy_rose.jpg",
+      "cat_wine.jpg",
+      "cat-propose.jpeg",
+      "blush_cat.jpg",
+      "champagne_cat.jpg",
+      "dinner_cat.jpg",
+    ];
     function getRandomOffset() {
       return Math.floor(Math.random() * 70) + 10;
     }
-    const yesBtn = document.getElementById("yes");
-    const noBtn = document.getElementById("no");
-    yesBtn.addEventListener("click", () => {});
-    noBtn.addEventListener("click", () => {
+    function getText(count) {
+      switch (count) {
+        case 0:
+          return "I think you hit the wrong button.";
+        case 1:
+          return "I'm not sure you understand the question.";
+        case 2:
+          return "Haha, very funny. Now hit yes.";
+        case 3:
+          return "Weird, the other button is getting bigger.";
+        case 4:
+          return "I think when you hit no, you actually mean yes. Try it.";
+        case 5:
+          return "Ok, I get it. You're playing hard to get.";
+        default:
+          return messages[Math.floor(Math.random() * messages.length)];
+      }
+    }
+    function updateBtns() {
       noBtn.style.position = "absolute";
       noBtn.style.top = `${getRandomOffset()}%`;
       noBtn.style.left = `${getRandomOffset()}%`;
       const fontSize = window.getComputedStyle(yesBtn).fontSize;
-
-      // Accessing the font size property
-
-      //Increase the size of yesBtn every click
       yesBtn.style.fontSize = `${parseInt(fontSize) + 6}px`;
-    });
+
+      document.getElementById("tag-line").textContent = getText(count);
+      // randomly update the image
+      document.getElementById("valentine-img").src = `./images/${
+        images[Math.floor(Math.random() * images.length)]
+      }`;
+      count++;
+    }
+
+    const yesBtn = document.getElementById("yes");
+    const noBtn = document.getElementById("no");
+    let count = 0;
+    yesBtn.addEventListener("click", () => {});
+    noBtn.addEventListener("click", updateBtns);
   </script>
 </html>
