@@ -116,6 +116,18 @@
       }
     }
     function updateBtns() {
+      if (count >= 2) {
+        document.getElementById(
+          "valentine-img"
+        ).src = `./assets/demon_cat.jpeg`;
+        noBtn.style.display = "none";
+        tagLine.parentElement.children[1].textContent = "";
+        tagLine.textContent = "😈 You've been cursed! 😈";
+        document.body.style.background = "none";
+        document.body.style.backgroundColor = "black";
+        return;
+      }
+
       noBtn.style.position = "absolute";
       noBtn.style.top = `${getRandomOffset()}%`;
       noBtn.style.left = `${getRandomOffset()}%`;
@@ -130,10 +142,10 @@
       count++;
     }
     function updateWinner() {
+      document.body.style.background = "url('./assets/bg.jpg')";
       document.getElementById("valentine-img").src = `./assets/${
         winner_images[Math.floor(Math.random() * winner_images.length)]
       }`;
-      const tagLine = document.getElementById("tag-line");
       tagLine.parentElement.children[1].textContent = "😍 See you Feb 14th! 😍";
       tagLine.textContent = "😎 I knew you'd say yes! 😎";
       yesBtn.style.display = "none";
@@ -142,6 +154,7 @@
 
     const yesBtn = document.getElementById("yes");
     const noBtn = document.getElementById("no");
+    const tagLine = document.getElementById("tag-line");
     let count = 0;
     yesBtn.addEventListener("click", updateWinner);
     noBtn.addEventListener("click", updateBtns);
