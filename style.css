@@ -130,7 +130,7 @@ table {
 }
 body {
   line-height: 1;
-  background-image: url("./images/bg.jpg");
+  background-image: url("./assets/bg.jpg");
 }
 button {
   padding: 0.5rem 2rem;
