@@ -139,7 +139,9 @@
       document.getElementById("valentine-img").src = `./assets/${
         winner_images[Math.floor(Math.random() * winner_images.length)]
       }`;
-      document.getElementById("tag-line").textContent = "I knew you'd say yes!";
+      const tagLine = document.getElementById("tag-line");
+      tagLine.parentElement.children[1].textContent = "😍 See you Feb 14th! 😍";
+      tagLine.textContent = "😎 I knew you'd say yes! 😎";
       yesBtn.style.display = "none";
       noBtn.style.display = "none";
     }
