@@ -141,6 +141,10 @@ button {
   top: 60%;
   z-index: 1;
   margin-top: 2rem;
+  background: hsl(1.22, 74%, 60.78%);
+}
+button:hover {
+  background: palevioletred;
 }
 img {
   height: 30rem;
@@ -166,12 +170,6 @@ p {
 .wrapper > div {
   gap: 1rem;
   display: flex;
-}
-.yes-btn {
-  background: palevioletred;
-}
-.no-btn {
-  background: palevioletred;
 }
 
 @media (max-width: 768px) {
