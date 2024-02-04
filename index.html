@@ -127,6 +127,7 @@
         document.body.style.backgroundColor = "black";
         return;
       }
+      //add back button capability
 
       noBtn.style.position = "absolute";
       noBtn.style.top = `${getRandomOffset()}%`;
@@ -136,9 +137,12 @@
 
       document.getElementById("tag-line").textContent = getText(count);
       // randomly update the image
-      document.getElementById("valentine-img").src = `./assets/${
-        images[Math.floor(Math.random() * images.length)]
-      }`;
+      currentImageIndex = Math.floor(Math.random() * images.length);
+      document.getElementById(
+        "valentine-img"
+      ).src = `./assets/${images[currentImageIndex]}`;
+      images.splice(currentImageIndex, 1);
+      console.log(images);
       count++;
     }
     function updateWinner() {
@@ -156,6 +160,7 @@
     const noBtn = document.getElementById("no");
     const tagLine = document.getElementById("tag-line");
     let count = 0;
+    let currentImageIndex = 0;
     yesBtn.addEventListener("click", updateWinner);
     noBtn.addEventListener("click", updateBtns);
   </script>
